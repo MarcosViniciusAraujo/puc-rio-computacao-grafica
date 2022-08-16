@@ -116,7 +116,7 @@ static void drawCube1 ()
 static void drawCube2 ()
 {
   glPushMatrix();
-  glScalef(2.0f,0.2f,2.0f);
+  glScalef(3.0f,0.2f,3.0f);
   glTranslatef(0.0f,-1.0f,0.0f);
   drawCube();
   glPopMatrix();
@@ -127,6 +127,15 @@ static void drawCube3 ()
   glPushMatrix();
   glScalef(0.7f,0.7f,0.7f);
   glTranslatef(0.0f,1.35f,0.0f);
+  drawCube();
+  glPopMatrix();
+}
+static void drawCube4 ()
+{
+  glPushMatrix();
+  glScalef(0.4f,0.4f,0.4f);
+  glTranslatef(2.5f, 0.0f, 1.0f);
+  glRotated(40, 0.0f, 2.0f, 0.0f);
   drawCube();
   glPopMatrix();
 }
@@ -153,11 +162,19 @@ static void loadMaterialGray ()
   glMaterialfv(GL_FRONT,GL_AMBIENT_AND_DIFFUSE,gray);
 } 
  
+static void loadMaterialGreen ()
+{
+  float b[] = {0.0f,1.0f,0.0f,1.0f};
+  glMaterialfv(GL_FRONT,GL_AMBIENT_AND_DIFFUSE,b);
+} 
+
 static void loadMaterialBlue ()
 {
   float b[] = {0.0f,0.0f,1.0f,1.0f};
   glMaterialfv(GL_FRONT,GL_AMBIENT_AND_DIFFUSE,b);
 } 
+
+
 
 static void display (void)
 { 
@@ -168,8 +185,10 @@ static void display (void)
   drawCube1();
   loadMaterialGray();
   drawCube2();
-  loadMaterialBlue();
+  loadMaterialGreen();
   drawCube3();
+  loadMaterialBlue();
+  drawCube4();
   glutSwapBuffers(); // update screen 
 }
 
