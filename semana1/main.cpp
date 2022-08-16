@@ -1,3 +1,8 @@
+/*
+  Marcos Vinicius Araujo Almeida - 1910869  
+  Felipe Frighetto Gonzalez - 1910438
+*/
+
 #include <GL/gl.h>
 #include <GLUT/glut.h>
 
@@ -135,7 +140,7 @@ static void drawCube4 ()
   glPushMatrix();
   glScalef(0.4f,0.4f,0.4f);
   glTranslatef(2.5f, 0.0f, 1.0f);
-  glRotated(40, 0.0f, 2.0f, 0.0f);
+  glRotated(30, 0.0f, 2.0f, 0.0f);
   drawCube();
   glPopMatrix();
 }
@@ -219,7 +224,7 @@ int main (int argc, char* argv[])
   glutInitWindowSize (600, 400); 
 
   // create window 
-  glutCreateWindow ("simple");
+  glutCreateWindow ("MVAA - FFG | 16/08/2022");
   glutDisplayFunc(display);
   glutKeyboardFunc(keyboard); 
 
