@@ -280,7 +280,7 @@ int main ()
 
   glfwSetErrorCallback(error);
 
-  GLFWwindow* win = glfwCreateWindow(600,400,"Window title",nullptr,nullptr);
+  GLFWwindow* win = glfwCreateWindow(600,400,"MVAA & FFG",nullptr,nullptr);
   glfwSetFramebufferSizeCallback(win, resize);  // resize callback
   glfwSetKeyCallback(win, keyboard);            // keyboard callback
   glfwSetMouseButtonCallback(win, mousebutton); // mouse button callback
