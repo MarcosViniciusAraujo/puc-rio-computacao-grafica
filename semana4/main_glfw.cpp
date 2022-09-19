@@ -14,6 +14,7 @@
 #include "arcball.h"
 #include "camera.h"
 #include "objlight.h"
+#include "spotlight.h"
 #include "material.h"
 #include "transform.h"
 #include "cube.h"
@@ -28,6 +29,7 @@ static float viewer_pos[3] = {2.0f, 3.0f, 4.0f};
 static Camera* camera;
 static Arcball* arcball;
 static Light* light;
+static Light* light2;
 
 static Material* red;
 static Material* gray;
@@ -78,7 +80,9 @@ static void initialize (void)
   camera = new Camera(viewer_pos[0],viewer_pos[1],viewer_pos[2]);
   arcball = camera->CreateArcball();
   light = new ObjLight(viewer_pos[0],viewer_pos[1],viewer_pos[2]);
-  
+
+  light2 = new Spotlight(0.0f, 1.0f, 0.0f, 1.0f,0.0f, -1.0, 0.0f, 120.0, 120.0);
+
   //cores
   red = new Material(1.0f,0.0f,0.0f);
   gray = new Material(0.8f,0.8f,0.8f);
@@ -167,6 +171,8 @@ static void display (GLFWwindow * win)
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear window 
   camera->Setup();
   light->Setup();
+  light2->Setup();
+
   trf->Load();
   gray->Load();
   cube->Draw();

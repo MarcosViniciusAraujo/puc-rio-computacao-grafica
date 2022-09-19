@@ -19,6 +19,7 @@ SRC = \
   light.cpp \
   material.cpp \
   objlight.cpp \
+  spotlight.cpp \
   sphere.cpp \
   transform.cpp \
   pyramid_array.cpp \

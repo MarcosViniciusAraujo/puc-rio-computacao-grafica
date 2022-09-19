@@ -25,7 +25,7 @@ SRC = \
   solar_syst.cpp \
   sphere.cpp \
   transform.cpp \
-  main_solar_syst_glfw.cpp \
+  main_glfw.cpp \
 
 OBJ = $(addsuffix .o, $(basename $(SRC))) 
 

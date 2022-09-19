@@ -35,21 +35,56 @@ static void initialize (void)
   // create objects
   camera = Camera::Make(viewer_pos[0],viewer_pos[1],viewer_pos[2]);
   LightPtr light = ObjLight::Make(viewer_pos[0],viewer_pos[1],viewer_pos[2]);
+
+
   MaterialPtr red = Material::Make(1.0f,0.0f,0.0f);
   MaterialPtr gray = Material::Make(0.8f,0.8f,0.8f);
+  
   TransformPtr trf1 = Transform::Make();
+
   trf1->Translate(0.0f,0.5f,0.0f);
   trf1->Scale(0.5f,0.5f,0.5f);
+
+
+  TransformPtr trfScalePernasMesa = Transform::Make();
+
+  trfScalePernasMesa->Scale(0.2f, 1.5f, 0.2f);
+
+
   TransformPtr trf2 = Transform::Make();
   trf2->Scale(2.0f,0.2f,2.0f);
   trf2->Translate(0.0f,-1.0f,0.0f);
   ShapePtr cube = CubeArray::Make();
   ShapePtr sphere = Sphere::Make();
 
+
+  ShapePtr perna = CubeArray::Make();
+
+  TransformPtr posicaoPernaMesa1 = Transform::Make();
+  posicaoPernaMesa1->Translate(-1.4f, -1.5f, -1.4f);
+
+  TransformPtr posicaoPernaMesa2 = Transform::Make();
+  posicaoPernaMesa2->Translate(-1.4f, -1.5f, 1.4f);
+
+  TransformPtr posicaoPernaMesa3 = Transform::Make();
+  posicaoPernaMesa3->Translate(1.4f, -1.5f, -1.4f);
+
+  TransformPtr posicaoPernaMesa4 = Transform::Make();
+  posicaoPernaMesa4->Translate(1.4f, -1.5f, 1.4f);
+
+  NodePtr pernas = Node::Make({
+    Node::Make(posicaoPernaMesa1, {gray}, {perna}),
+    Node::Make(posicaoPernaMesa2, {gray}, {perna}),
+    Node::Make(posicaoPernaMesa3, {gray}, {perna}),
+    Node::Make(posicaoPernaMesa4, {gray}, {perna})
+  });
+
+
   // build scene
   NodePtr root = Node::Make(
     {Node::Make(trf1,{red},{sphere}),
-     Node::Make(trf2,{gray},{cube})
+     Node::Make(trf2,{gray},{cube}),
+     Node::Make(trfScalePernasMesa, {gray}, {pernas})
     }
   );
   arcball = camera->CreateArcball();
