@@ -16,6 +16,7 @@
 #include "cube.h"
 #include "cube_array.h"
 #include "sphere.h"
+#include "pyramid_array.h"
 
 #include <iostream>
 
@@ -28,7 +29,7 @@ static ArcballPtr arcball;
 static void initialize (void)
 {
   // set background color: white 
-  glClearColor(1.0f,1.0f,1.0f,1.0f);
+  glClearColor(0.0f,0.0f,0.0f,1.0f);
   // enable depth test 
   glEnable(GL_DEPTH_TEST);
 
@@ -36,57 +37,103 @@ static void initialize (void)
   camera = Camera::Make(viewer_pos[0],viewer_pos[1],viewer_pos[2]);
   LightPtr light = ObjLight::Make(viewer_pos[0],viewer_pos[1],viewer_pos[2]);
 
-
+  //materiais
   MaterialPtr red = Material::Make(1.0f,0.0f,0.0f);
+  MaterialPtr blue = Material::Make(0.0f,0.0f,1.0f);
+  MaterialPtr yellow = Material::Make(1.0f,1.0f,0.2f);
   MaterialPtr gray = Material::Make(0.8f,0.8f,0.8f);
+
+  // transformações
+  TransformPtr trfCubo = Transform::Make();
+  trfCubo->Scale(0.5f, 0.5f, 0.5f);
+
+
+
+    //-> Mesa
+  TransformPtr trfTampao = Transform::Make();
+  trfTampao->Scale(3.0f, 0.2f, 3.0f);
+  trfTampao->Translate(0.0f, -1.0f, 0.0f);
+
+  TransformPtr trfPerna1 = Transform::Make();
+  trfPerna1->Translate(-1.4f, -1.5f, -1.4f);
+  trfPerna1->Scale(0.2f, 1.5f, 0.2f);
+
+  TransformPtr trfPerna2 = Transform::Make();
+  trfPerna2->Translate(-1.4f, -1.5f, 1.4f);
+  trfPerna2->Scale(0.2f, 1.5f, 0.2f);
+
+  TransformPtr trfPerna3 = Transform::Make();
+  trfPerna3->Translate(1.4f, -1.5f, -1.4f);
+  trfPerna3->Scale(0.2f, 1.5f, 0.2f);
+
+  TransformPtr trfPerna4 = Transform::Make();
+  trfPerna4->Translate(1.4f, -1.5f, 1.4f);
+  trfPerna4->Scale(0.2f, 1.5f, 0.2f);
+
+
+
+    //-> Piramide
+  TransformPtr trfPiramide = Transform::Make();
+  trfPiramide->Translate(0.8f, 0.0f, -1.0f);
+  trfPiramide->Scale(0.7f, 0.7f, 0.7f);
+
+
+
+
+    //->lampada
   
-  TransformPtr trf1 = Transform::Make();
+  TransformPtr trfBaseLamp = Transform::Make();
+  trfBaseLamp->Translate(-0.8f, 0.0f, 1.0f);
+  trfBaseLamp->Scale(0.5f, 0.1f, 0.5f);
 
-  trf1->Translate(0.0f,0.5f,0.0f);
-  trf1->Scale(0.5f,0.5f,0.5f);
+  TransformPtr trfCaboLamp = Transform::Make();
+  trfCaboLamp->Translate(-0.8f, 0.0f, 1.0f);
+  trfCaboLamp->Rotate(15.0f, 1.0f, 0.0f, 0.0f);
+  trfCaboLamp->Rotate(45.0f, 0.0f, 1.0f, 0.0f);
+  trfCaboLamp->Scale(0.1f, 1.0f, 0.1f);
 
 
-  TransformPtr trfScalePernasMesa = Transform::Make();
+  TransformPtr trfArticulacaoLamp = Transform::Make();
+  trfArticulacaoLamp->Translate(-0.80f, 1.0f, 1.25f);
+  trfArticulacaoLamp->Scale(0.11f, 0.11f, 0.11f);
 
-  trfScalePernasMesa->Scale(0.2f, 1.5f, 0.2f);
 
+  TransformPtr trfCabo2Lamp = Transform::Make();
+  //trfCabo2Lamp->Translate();
+  //trfCabo2Lamp->Scale();
 
-  TransformPtr trf2 = Transform::Make();
-  trf2->Scale(2.0f,0.2f,2.0f);
-  trf2->Translate(0.0f,-1.0f,0.0f);
+  //shapes
+  ShapePtr tampao = CubeArray::Make();
   ShapePtr cube = CubeArray::Make();
-  ShapePtr sphere = Sphere::Make();
-
-
   ShapePtr perna = CubeArray::Make();
+  ShapePtr piramide = PyramidArray::Make();
 
-  TransformPtr posicaoPernaMesa1 = Transform::Make();
-  posicaoPernaMesa1->Translate(-1.4f, -1.5f, -1.4f);
-
-  TransformPtr posicaoPernaMesa2 = Transform::Make();
-  posicaoPernaMesa2->Translate(-1.4f, -1.5f, 1.4f);
-
-  TransformPtr posicaoPernaMesa3 = Transform::Make();
-  posicaoPernaMesa3->Translate(1.4f, -1.5f, -1.4f);
-
-  TransformPtr posicaoPernaMesa4 = Transform::Make();
-  posicaoPernaMesa4->Translate(1.4f, -1.5f, 1.4f);
-
-  NodePtr pernas = Node::Make({
-    Node::Make(posicaoPernaMesa1, {gray}, {perna}),
-    Node::Make(posicaoPernaMesa2, {gray}, {perna}),
-    Node::Make(posicaoPernaMesa3, {gray}, {perna}),
-    Node::Make(posicaoPernaMesa4, {gray}, {perna})
-  });
+  ShapePtr baseLamp = CubeArray::Make();
+  ShapePtr CaboLamp = CubeArray::Make();
+  ShapePtr articulacaoLamp = Sphere::Make();
+  ShapePtr cabecaLamp = PyramidArray::Make();
 
 
-  // build scene
+  //build scene
+  
   NodePtr root = Node::Make(
-    {Node::Make(trf1,{red},{sphere}),
-     Node::Make(trf2,{gray},{cube}),
-     Node::Make(trfScalePernasMesa, {gray}, {pernas})
+    {
+      //Node::Make(trfCubo, {yellow}, {cube}),
+      Node::Make(trfTampao, {gray}, {tampao}),
+      Node::Make(trfPiramide, {yellow}, {piramide}),
+      Node::Make(trfPerna1, {gray}, {perna}),
+      Node::Make(trfPerna2, {gray}, {perna}),
+      Node::Make(trfPerna3, {gray}, {perna}),
+      Node::Make(trfPerna4, {gray}, {perna}),
+      Node::Make(trfBaseLamp, {blue}, {baseLamp}),
+      Node::Make(trfCaboLamp, {gray}, {CaboLamp}),
+      Node::Make(trfArticulacaoLamp, {yellow}, {articulacaoLamp}),
+      Node::Make(trfCabo2Lamp, {red}, {CaboLamp}),
     }
+
   );
+
+
   arcball = camera->CreateArcball();
   scene = Scene::Make(root,light);
 }
