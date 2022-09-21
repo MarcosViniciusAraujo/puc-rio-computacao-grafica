@@ -1,5 +1,5 @@
 #include "scene.h"
-
+#include <iostream>
 #include <GL/gl.h>
 
 
@@ -35,6 +35,9 @@ void Scene::Render (CameraPtr camera) const
     glEnable(GL_LIGHTING);
     glEnable(GL_NORMALIZE);
     m_light->Setup();
+
+    std::cout << m_light->GetReference() << std::endl;
+
   }
   m_root->Render();
-}
+} 

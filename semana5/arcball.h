@@ -15,6 +15,7 @@ public:
   static ArcballPtr Make (float distance);
   void InitMouseMotion (int x, int y);
   void AccumulateMouseMotion (int x, int y);
+  void setZoom(float x);
   const float* GetMatrix () const;
 };
 

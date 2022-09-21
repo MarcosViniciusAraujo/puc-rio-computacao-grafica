@@ -40,6 +40,19 @@ ArcballPtr Arcball::Make (float distance)
   return ArcballPtr(new Arcball(distance));
 }
 
+void Arcball::setZoom (float x)
+{
+  glPushMatrix();
+  glLoadIdentity();
+  glTranslatef(0.0f,0.0f,-m_distance);
+  glScalef(x, x, x);
+  glTranslatef(0.0f,0.0f,m_distance);
+  glMultMatrixf(m_mat);
+  glGetFloatv(GL_MODELVIEW_MATRIX, m_mat);
+  glPopMatrix();
+}
+
+
 void Arcball::InitMouseMotion (int x0, int y0)
 {
   m_x0 = x0;

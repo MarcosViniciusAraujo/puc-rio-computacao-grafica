@@ -17,6 +17,7 @@
 #include "cube_array.h"
 #include "sphere.h"
 #include "pyramid_array.h"
+#include "spotlight.h"
 
 #include <iostream>
 
@@ -29,19 +30,27 @@ static ArcballPtr arcball;
 static void initialize (void)
 {
   // set background color: white 
-  glClearColor(0.0f,0.0f,0.0f,1.0f);
+  glClearColor(1.0f,1.0f,1.0f,1.0f);
   // enable depth test 
   glEnable(GL_DEPTH_TEST);
 
   // create objects
   camera = Camera::Make(viewer_pos[0],viewer_pos[1],viewer_pos[2]);
   LightPtr light = ObjLight::Make(viewer_pos[0],viewer_pos[1],viewer_pos[2]);
+  //LightPtr spot = Spotlight::Make(-0.430f, 1.45f, 0.8f, 1.0f, 0.8f, 0.0f, -1.0f, 30.0f, 30.0f);
+  LightPtr spot = Spotlight::Make(0.0f, 1.45f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 30.0f, 120.0f);
+
+
 
   //materiais
   MaterialPtr red = Material::Make(1.0f,0.0f,0.0f);
   MaterialPtr blue = Material::Make(0.0f,0.0f,1.0f);
   MaterialPtr yellow = Material::Make(1.0f,1.0f,0.2f);
   MaterialPtr gray = Material::Make(0.8f,0.8f,0.8f);
+  MaterialPtr brownWood = Material::Make(0.38431f,  0.2f,  0.04314f);
+  MaterialPtr lightWood = Material::Make(0.52157f,  0.36863f,  0.25882f);
+  MaterialPtr darkWood = Material::Make(0.16078f,  0.08627f,  0.01961f);
+
 
   // transformações
   TransformPtr trfCubo = Transform::Make();
@@ -94,13 +103,28 @@ static void initialize (void)
 
 
   TransformPtr trfArticulacaoLamp = Transform::Make();
-  trfArticulacaoLamp->Translate(-0.80f, 1.0f, 1.25f);
+  trfArticulacaoLamp->Translate(-0.8f, 1.0f, 1.25f);
   trfArticulacaoLamp->Scale(0.11f, 0.11f, 0.11f);
 
 
   TransformPtr trfCabo2Lamp = Transform::Make();
-  //trfCabo2Lamp->Translate();
-  //trfCabo2Lamp->Scale();
+  trfCabo2Lamp->Translate(-0.77f, 1.0f, 1.25f);
+  trfCabo2Lamp->Rotate(45.0f, -1.0f, 0.0f, 0.0f);
+  trfCabo2Lamp->Rotate(45.0f, 0.0f, 1.0f, 0.0f);
+  trfCabo2Lamp->Rotate(30.0f, 1.0f, 0.0f, 0.0f);
+  trfCabo2Lamp->Scale(0.1f, 0.6f, 0.1f);
+
+
+  TransformPtr trfCabecaLamp = Transform::Make();
+  trfCabecaLamp->Translate(-0.4f, 1.5f, 0.8f);
+  trfCabecaLamp->Rotate(90.0f, 1.0f, -1.0f, 0.0f);
+  trfCabecaLamp->Scale(0.5f, 0.5f, 0.5f);
+
+
+  TransformPtr trfLuzLamp = Transform::Make();
+  trfLuzLamp->Translate(-0.430f, 1.45f, 0.8f);
+  trfLuzLamp->Scale(0.11f, 0.11f, 0.11f);
+
 
   //shapes
   ShapePtr tampao = CubeArray::Make();
@@ -112,30 +136,33 @@ static void initialize (void)
   ShapePtr CaboLamp = CubeArray::Make();
   ShapePtr articulacaoLamp = Sphere::Make();
   ShapePtr cabecaLamp = PyramidArray::Make();
+  ShapePtr luzLamp = Sphere::Make();
 
 
   //build scene
   
   NodePtr root = Node::Make(
     {
-      //Node::Make(trfCubo, {yellow}, {cube}),
       Node::Make(trfTampao, {gray}, {tampao}),
       Node::Make(trfPiramide, {yellow}, {piramide}),
       Node::Make(trfPerna1, {gray}, {perna}),
       Node::Make(trfPerna2, {gray}, {perna}),
       Node::Make(trfPerna3, {gray}, {perna}),
       Node::Make(trfPerna4, {gray}, {perna}),
-      Node::Make(trfBaseLamp, {blue}, {baseLamp}),
-      Node::Make(trfCaboLamp, {gray}, {CaboLamp}),
-      Node::Make(trfArticulacaoLamp, {yellow}, {articulacaoLamp}),
-      Node::Make(trfCabo2Lamp, {red}, {CaboLamp}),
+      Node::Make(trfBaseLamp, {brownWood}, {baseLamp}),
+      Node::Make(trfCaboLamp, {lightWood}, {CaboLamp}),
+      Node::Make(trfArticulacaoLamp, {darkWood}, {articulacaoLamp}),
+      Node::Make(trfCabo2Lamp, {lightWood}, {CaboLamp}),
+      Node::Make(trfCabecaLamp, {brownWood}, {cabecaLamp}),
+      Node::Make(trfLuzLamp, {red}, {luzLamp}),
+      //Node::Make(spot),
     }
 
   );
 
 
   arcball = camera->CreateArcball();
-  scene = Scene::Make(root,light);
+  scene = Scene::Make(root,spot);
 }
 
 static void error (int code, const char* msg)
@@ -192,6 +219,23 @@ static void mousebutton (GLFWwindow* win, int button, int action, int mods)
     glfwSetCursorPosCallback(win, nullptr);      // callback disabled
 }
 
+static void zoom (GLFWwindow* win, double x, double y)
+{
+  std::cout << y << std::endl;
+
+  if (y < 0){
+    //zoom in
+    std::cout << "Zoom in de 1.5" << std::endl;
+    arcball->setZoom(1.05);
+  }
+
+  else{
+    //zoom out
+    std::cout << "Zoom out de 0.75" << std::endl;
+    arcball->setZoom(0.95);
+  }
+}
+
 int main ()
 {
   glfwInit();
@@ -209,7 +253,9 @@ int main ()
   glfwSetFramebufferSizeCallback(win, resize);  // resize callback
   glfwSetKeyCallback(win, keyboard);            // keyboard callback
   glfwSetMouseButtonCallback(win, mousebutton); // mouse button callback
-  
+  glfwSetScrollCallback(win, zoom);
+
+
   glfwMakeContextCurrent(win);
   printf("OpenGL version: %s\n", glGetString(GL_VERSION));
 

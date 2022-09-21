@@ -23,6 +23,7 @@ SRC = \
   node.cpp \
   scene.cpp \
   solar_syst.cpp \
+  spotlight.cpp \
   sphere.cpp \
   transform.cpp \
   pyramid_array.cpp \
