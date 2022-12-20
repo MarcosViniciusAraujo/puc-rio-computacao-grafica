@@ -1,0 +1,390 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Mon Aug 29 16:01:42 2022
+
+# Variables
+
+# automatic
+ 
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `Makefile', line 29)
+OBJ = $(addsuffix .o, $(basename $(SRC))) 
+# makefile (from `Makefile', line 13)
+SRC = arcball.cpp camera.cpp cube.cpp cube_array.cpp grid.cpp error.cpp light.cpp objlight.cpp main.cpp material.cpp node.cpp scene.cpp sphere.cpp transform.cpp 
+# makefile (from `Makefile', line 2)
+TARGET = t
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `Makefile', line 11)
+CPPFLAGS = -g -Wall -std=c++17 -DGL_SILENCE_DEPRECATION 
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/celes/DI/CG/2022.2/codes/compat/4-scene
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+INFOPATH = /opt/homebrew/share/info:
+# makefile (from `Makefile', line 9)
+CPP = CC
+# environment
+VSCODE_CWD = /
+# environment
+PATH = .:~/bin:/usr/local/bin:/usr/local/cuda/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Library/Apple/usr/bin:/opt/homebrew/bin
+# environment
+CPUPROFILE = profile
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from `Makefile', line 7)
+LIB = -L.  -L/opt/homebrew/lib
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.CNkPlm5J8d/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+PWD = /Users/celes/DI/CG/2022.2/codes/compat/4-scene
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+MANPATH = /opt/homebrew/share/man::
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/celes
+# environment
+LD_LIBRARY_PATH = /opt/homebrew/lib:/Users/celes/Work/base/vismac/lib/MacOS10 
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/celes/Library/Application Support/Code/CachedData/6d9b74a70ca9c7733b29f0456fd8195364076dda
+# environment
+LOGNAME = celes
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# environment
+LUA_CPATH = lib?.dylib;lib?.so;/Users/celes/Work/base/import/lib/lib?.so;/Users/celes/Work/base/vismac/lib/MacOS10/lib?.so;/Users/celes/Work/lib/lib?.dylib;/Users/celes/Work/lib/lib?.so;/usr/local/lib/lua/5.3/?.so;/Users/celes/Work/base/vismac/lib/MacOS10/lib?.so
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = celes
+# makefile
+.DEFAULT_GOAL := all
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# makefile (from `Makefile', line 6)
+INC = -I. -I/opt/homebrew/include 
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/jp/kq34ty7s59q7zw3s4wqrwflr0000gn/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/celes/Library/Application Support/Code/1.70.1-main.sock
+# environment
+MallocNanoZone = 0
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+PROMPT = [%~] 
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+CGAL_USE_BASIC_VIEWER = open
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.20168386.20168392
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+SVN_EDITOR = vi
+# environment
+HOMEBREW_REPOSITORY = /opt/homebrew
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LD_RUNPATH_SEARCH_PATH = /opt/homebrew/lib:/Users/celes/Work/base/vismac/lib/MacOS10
+# environment
+LC_ALL = C
+# environment
+LUA_PATH = ?.lua;?.lo;../?.lua;/Users/celes/Work/base/?.lua;/Users/celes/Work/base/vismac/lib/lua/lpeg/?.lo;/Users/celes/Work/lib/lua/?.lua;/Users/celes/Work/lib/lua/?.lo;/usr/local/share/lua/5.3/?.lua;/usr/local/share/lua/5.3/?/init.lua;/Users/celes/Work/base/vismac/src/vis/?.lua;/Users/celes/Work/base/vismac/vis/?.lua
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 67724
+# variable set hash-table stats:
+# Load=78/1024=8%, Rehash=0, Collisions=3/106=3%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+ 
+# . (device 16777232, inode 16877889): 54 files, no impossibilities.
+
+# 54 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+objlight.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:42:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+material.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 00:29:45
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+all: t
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+t: arcball.o camera.o cube.o cube_array.o grid.o error.o light.o objlight.o main.o material.o node.o scene.o sphere.o transform.o Makefile
+#  Implicit rule search has not been done.
+#  Last modified 2022-08-16 00:29:45
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 35):
+	$(CXX) $(LIB) -o $@ $(OBJ) -framework OpenGL -framework GLUT
+	
+
+# Not a target:
+grid.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-15 20:49:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+transform.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:43:00
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 00:24:27
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+camera.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:42:58
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+error.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:42:58
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sphere.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 00:27:21
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+cube_array.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 00:23:39
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+scene.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:43:00
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+light.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:42:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+.cpp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 32):
+	$(CPP) $(INC) $(CPPFLAGS) -c $< -o $@ 
+	
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 38):
+	rm -f $(TARGET) $(OBJ)
+	
+
+# Not a target:
+cube.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:42:58
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+main.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 00:29:45
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+arcball.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:42:58
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+node.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-01 22:43:00
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# files hash-table stats:
+# Load=21/1024=2%, Rehash=0, Collisions=0/50=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Mon Aug 29 16:01:42 2022
+
+ 
